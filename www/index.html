@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html>
+    <!--
+  * Please see the included README.md file for license terms and conditions.
+  -->
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="media_button_bar/css/media_button_bar.css">
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/af.ui.min.css">
+        <link rel="stylesheet" type="text/css" href="app_framework/2.1/css/icons.min.css">
+        <title>The Loft Beauty Salon</title>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+        <!--
+  * The "meta viewport" tag (below) helps your app size appropriately to a device's screen.
+  * Note that the meta viewport approach is being phased out in favor of the @viewport CSS rule.
+  * For a quick overview of both, see this article:
+  *   http://webdesign.tutsplus.com/tutorials/htmlcss-tutorials/quick-tip-dont-forget-the-viewport-meta-tag
+  * To see what happens, try the app on a real device with and without a "meta viewport" tag.
+-->
+
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, minimum-scale=1, maximum-scale=2"> -->
+
+        <style>
+            /* following three (cascaded) are equivalent to above three meta viewport statements */
+            /* see http://www.quirksmode.org/blog/archives/2014/05/html5_dev_conf.html */
+            /* see http://dev.w3.org/csswg/css-device-adapt/ */
+            @-ms-viewport {
+                width: 100vw;
+                zoom: 100%;
+            }
+            @viewport {
+                width: 100vw;
+                zoom: 100%;
+            }
+            @-ms-viewport {
+                user-zoom: fixed;
+            }
+            @viewport {
+                user-zoom: fixed;
+            }
+            /*@-ms-viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }   @viewport { user-zoom: zoom ; min-zoom: 100% ; max-zoom: 200% ; }*/
+        </style>
+
+        <link rel="stylesheet" href="css/old-android.css">
+        <link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
+
+        <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work below -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <!-- Most third-party libraries should go here. References (below) are just examples to give you the general idea... -->
+        <!-- <script src="lib/ft/fastclick.js"></script> -->
+
+        <script>
+        $.ui.useOSThemes=false;
+        
+          $.feat.nativeTouchScroll=false;
+        
+        
+        
+        </script>
+        <script src="intelxdk.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container api calls -->
+        <script src="cordova.js"></script>
+        <!-- phantom library, needed for Cordova api calls -->
+        <script src="xhr.js"></script>
+        <!-- phantom library, needed for XDK "legacy" container CORS -->
+
+        <script src="js/app.js"></script>
+        <script src="js/init-app.js"></script>
+        <script src="js/init-dev.js"></script>
+        <!--                        
+                        You may substitute jQuery for the App Framework selector library.
+                        See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+                -->
+        <script type="application/javascript" src="app_framework/2.1/appframework.js"></script>
+        <script type="application/javascript" src="app_framework/2.1/appframework.ui.js" data-ver="1"></script>
+        <script type="application/javascript" src="js/index_user_scripts.js"></script>
+        <script type="application/javascript" src="js/af_subpage.js"></script>
+        <script type="application/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+      
+        <script>
+            
+            function firstFunction(){
+            
+            if(intel.xdk.cache.getCookie("hrt1")=="1"){ document.getElementById('h1').src="images/heart.gif";}
+            if(intel.xdk.cache.getCookie("hrt2")=="1"){ document.getElementById('h2').src="images/heart.gif";}
+            if(intel.xdk.cache.getCookie("hrt3")=="1"){ document.getElementById('h3').src="images/heart.gif";}
+            if(intel.xdk.cache.getCookie("hrt4")=="1"){ document.getElementById('h4').src="images/heart.gif";}
+            if(intel.xdk.cache.getCookie("hrt5")=="1"){ document.getElementById('h5').src="images/heart.gif";}
+            if(intel.xdk.cache.getCookie("hrt6")=="1"){ document.getElementById('h6').src="images/heart.gif";}
+            
+            
+            
+            }
+    function check_code1() {
+        var tv=  document.getElementById("textValue1").value;
+        document.getElementById("textValue1").value="";
+        
+        if (tv=="786321"){
+            
+             document.getElementById('h1').src="images/heart.gif";
+            intel.xdk.cache.setCookie("hrt1","1",-1);
+            alert("Heart Unlocked");
+        
+        }else{
+                alert("Loyalty code is wrong!");
+        }   
+                }
+             function check_code2() {
+        var tv=  document.getElementById("textValue2").value;
+        document.getElementById("textValue2").value="";
+                 
+        
+        if (tv=="786321"){
+             
+             document.getElementById('h2').src="images/heart.gif";
+            
+            intel.xdk.cache.setCookie("hrt2","1",-1);
+             
+            alert("Heart Unlocked");
+        
+        }else{
+                alert("Loyalty code is wrong!");
+        }   
+                }
+             function check_code3() {
+        var tv=  document.getElementById("textValue3").value;
+        document.getElementById("textValue3").value="";
+        
+        if (tv=="786321"){
+            
+             document.getElementById('h3').src="images/heart.gif";
+            intel.xdk.cache.setCookie("hrt3","1",-1);
+            alert("Heart Unlocked");
+        
+        }else{
+                alert("Loyalty code is wrong!");
+        }   
+                }
+             function check_code4() {
+        var tv=  document.getElementById("textValue4").value;
+        document.getElementById("textValue4").value="";
+        
+        if (tv=="786321"){
+            
+             document.getElementById('h4').src="images/heart.gif";
+            intel.xdk.cache.setCookie("hrt4","1",-1);
+            alert("Heart Unlocked");
+        
+        }else{
+                alert("Loyalty code is wrong!");
+        }   
+                }
+             function check_code5() {
+        var tv=  document.getElementById("textValue5").value;
+        document.getElementById("textValue5").value="";
+        
+        if (tv=="786321"){
+            
+             document.getElementById('h5').src="images/heart.gif";
+            intel.xdk.cache.setCookie("hrt5","1",-1);
+            alert("Heart Unlocked");
+        
+        }else{
+                alert("Loyalty code is wrong!");
+        }   
+                }
+             function check_code6() {
+        var tv=  document.getElementById("textValue6").value;
+        document.getElementById("textValue6").value="";
+        
+        if (tv=="786321"){
+            
+             document.getElementById('h6').src="images/heart.gif";
+            intel.xdk.cache.setCookie("hrt6","1",-1);
+            alert("Heart Unlocked");
+   var v1= intel.xdk.cache.getCookie("hrt1");
+   var v2= intel.xdk.cache.getCookie("hrt2");
+   var v3= intel.xdk.cache.getCookie("hrt3");
+   var v4= intel.xdk.cache.getCookie("hrt4");
+   var v5= intel.xdk.cache.getCookie("hrt5");
+   var v6= intel.xdk.cache.getCookie("hrt6");
+            
+            if(v1 == "1" && v2 == "1" && v3 == "1" && v4 == "1" && v5 == "1" && v6 == "1"){alert("Congrats, You won 10% Discount!");
+                                                                                          intel.xdk.cache.clearAllCookies();
+                                                                                           
+                                                                                          }
+            
+            
+        }else{
+                alert("Loyalty code is wrong!");
+        }   
+                }
+
+        
+        </script>
+
+        <!--            
+            You may substitute jQuery for the App Framework selector library.
+            See http://app-framework-software.intel.com/documentation.php#afui/afui_jquery
+        -->
+        <script type="application/javascript" src="google_maps/google_maps.js"></script>
+        <script type="application/javascript" src="xdk/appdesigner/js/rest-of-space.js"></script>
+    </head>
+
+    <body id="afui" class="ios7" onload="firstFunction()">
+
+        <!-- IMPORTANT: Do not include your weinre script tag as part of your release builds! -->
+        <!-- Place your remote debugging (weinre) script URL from the Test tab here, if it does not work above -->
+        <!-- <script src="http://debug-software.intel.com/target/target-script-min.js#insertabiglongfunkynumberfromthexdkstesttab"></script> -->
+
+        <div class="uwrap" id="content">
+            <div class="upage panel mainpage-bg" id="mainpage" data-header="none" data-footer="af-footer-0">
+                <div class="upage-outer">
+
+                    <div class="upage-content wrapping-col left" id="mainsub">
+
+                        <div class="grid grid-pad urow uib_row_1 row-height-1" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_1 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="widget uib_w_12 scale-image d-margins" data-uib="media/img" data-ver="0">
+                                        <figure class="figure-align">
+                                            <img src="images/s2-1.jpg">
+                                            <figcaption data-position="bottom"></figcaption>
+                                        </figure>
+                                    </div><span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <div id="uib_page_3" class="upage-content hidden wrapping-col left">
+
+                        <div class="grid grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_4 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="widget uib_w_10 d-margins" data-uib="media/text" data-ver="0">
+                                        <div class="widget-container left-receptacle"></div>
+                                        <div class="widget-container right-receptacle"></div>
+                                        <div>
+                                            <p>This is the view for the fourth Tab.</p>
+                                        </div>
+                                    </div><span class="uib_shim"></span>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                        
+                    
+                  <!--  
+                    <div id="uib_page_2" class="upage-content hidden wrapping-col left">
+
+                        <div class="grid grid-pad urow uib_row_7 row-height-2 loyalty-bg" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_8 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="grid urow uib_row_6 row-height-6 outer-list-position" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+
+                                                <div class="uib-grid widget uib_w_26 grid-height outerlistBG" data-uib="layout/grid" data-ver="0">
+                                                    <div class="uib-grid-row">
+                                                        <div class="uib-grid-cell widget-container">
+
+                                                            <a href="#id_flipPage" data-transition="flip">
+                                                                <img class="widget uib_h1 loyalty-hearts " id="h1" src="images/hollow-heart.gif" onclick="filledHeart();">
+                                                            </a>
+                                                        </div>
+                                                        <div class="uib-grid-cell widget-container">
+
+                                                            <a href="#id_flipPage" data-transition="flip">
+                                                                <img class="widget uib_h2 loyalty-hearts " id="h2" src="images/hollow-heart.gif" onclick="filledHeart();">
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="uib-grid-cell widget-container">
+
+                                                            <a href="#id_flipPage" data-transition="flip">
+                                                                <img class="widget uib_h3 loyalty-hearts " id="h3" src="images/hollow-heart.gif" onclick="filledHeart();">
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="uib-grid-row">
+                                                        <div class="uib-grid-cell widget-container">
+
+                                                            <a href="#id_flipPage" data-transition="flip">
+                                                                <img class="widget uib_h4 loyalty-hearts " id="h4" src="images/hollow-heart.gif" onclick="filledHeart();">
+                                                            </a>
+                                                        </div>
+                                                        <div class="uib-grid-cell widget-container">
+
+                                                            <a href="#id_flipPage" data-transition="flip">
+                                                                <img class="widget uib_h5 loyalty-hearts " id="h5" src="images/hollow-heart.gif" onclick="filledHeart();">
+                                                            </a>
+                                                        </div>
+
+                                                        <div class="uib-grid-cell widget-container">
+
+                                                            <a href="#id_flipPage" data-transition="flip">
+                                                                <img class="widget uib_h6 loyalty-hearts " id="h6" src="images/hollow-heart.gif" onclick="filledHeart();">
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+
+                    </div> 
+                    -->
+                    
+                    
+                    
+                    <div id="uib_page_1" class="upage-content hidden wrapping-col left">
+
+                        <div class="grid urow uib_row_2 row-height-2 treatment-bg" data-uib="layout/row" data-ver="0">
+                            <div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                <div class="widget-container content-area vertical-col">
+
+                                    <div class="grid urow uib_row_6 row-height-6 outer-list-position" data-uib="layout/row" data-ver="0">
+                                        <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                            <div class="widget-container content-area vertical-col">
+
+                                                <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font outerlistBG " data-uib="media/text" data-ver="0" id="eyes">
+                                                    <div class="widget-container left-receptacle"></div>
+                                                    <div class="widget-container right-receptacle"></div>
+                                                    <div>
+                                                        <p>Eyes
+
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="widget uib_w_21 Script-mt-bold-font inner-list-font-color-size innerlist-font outerlistBG" data-uib="media/text" data-ver="0" id="handsAndFeet">
+                                                    <div class="widget-container left-receptacle"></div>
+                                                    <div class="widget-container right-receptacle"></div>
+                                                    <div>
+                                                        <p>Hands and Feet</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="widget uib_w_22 Script-mt-bold-font inner-list-font-color-size innerlist-font outerlistBG" data-uib="media/text" data-ver="0" id="waxing">
+                                                    <div class="widget-container left-receptacle"></div>
+                                                    <div class="widget-container right-receptacle"></div>
+                                                    <div>
+                                                        <p>Waxing</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="widget uib_w_23 Script-mt-bold-font inner-list-font-color-size innerlist-font outerlistBG" data-uib="media/text" data-ver="0" id="offers">
+                                                    <div class="widget-container left-receptacle"></div>
+                                                    <div class="widget-container right-receptacle"></div>
+                                                    <div>
+                                                        <p>Additionals and Offers</p>
+                                                    </div>
+
+                                                </div>
+
+                                                <span class="uib_shim"></span>
+                                            </div>
+                                        </div>
+                                        <span class="uib_shim"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <!-- /upage-content -->
+
+                    <footer class="inner-element uib_w_3" data-uib="app_framework/footer" data-ver="1" id="af-footer-0"><a class="widget uib_w_7 d-margins icon home" data-uib="app_framework/button" data-ver="1">Home</a><a class="widget uib_w_6 d-margins icon loading" data-uib="app_framework/button" data-ver="1">Treatments</a><a class="widget uib_w_5 d-margins icon heart"
+                        data-uib="app_framework/button" data-ver="1">Loyalty</a><a class="widget uib_w_4 d-margins icon mail" data-uib="app_framework/button" data-ver="1">Contact</a>
+                    </footer>
+                </div>
+                <!-- /upage-outer -->
+
+                <div id="uib_page_4" class="upage-content left hidden wrapping-col">
+
+                    <div class="grid grid-pad urow uib_row_5 main-bg row-height-5" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="grid urow uib_row_5 heading-titles" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_19 d-margins heading Script-mt-bold-font" data-uib="media/text" data-ver="0">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Eyes</p>
+                                                </div>
+                                            </div><span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid urow uib_row_6 row-height-6 innerlist-bg" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="eyebrowShape">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Eyebrow Shape £5.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="eyeLashTint">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Eyelash Tint £6.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="eyePerm">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Eyelash Perm £15.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="partyLashes">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Party lashes £10.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="eyelashPermTint">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Eyelash Perm and Tint £20.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="eyelashShapeTint">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Eyelash Shape and Tint £10.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+                </div>
+                <div id="uib_pageHands_5" class="upage-content left hidden wrapping-col">
+
+                    <div class="grid grid-pad urow uib_row_5 main-bg row-height-5" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="grid urow uib_row_5 heading-titles" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_19 d-margins heading Script-mt-bold-font" data-uib="media/text" data-ver="0">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Hands and Feet</p>
+                                                </div>
+                                            </div><span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid urow uib_row_6 row-height-6 innerlist-bg" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_21 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="deluxManicure">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Delux Manicure £20.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="deluxPedicure">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Delux Pedicure £20.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="expressManicure">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Express Manicure £10.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="expressPedicure">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Express Pedicure £10.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="madisonUnique">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Madison Unique Gel Polish Hands or Feet £15.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+
+                </div>
+                <div id="uib_pageWaxing_6" class="upage-content left hidden wrapping-col">
+
+                    <div class="grid grid-pad urow uib_row_5 main-bg row-height-5" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="grid urow uib_row_5 heading-titles" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_19 d-margins heading Script-mt-bold-font" data-uib="media/text" data-ver="0">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Waxing</p>
+                                                </div>
+                                            </div><span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid urow uib_row_6 row-height-6 innerlist-bg" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="leg">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>1/2 Leg Wax £7.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="fullLeg">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Full Leg Wax £10.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="underarm">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Underarm Wax £5.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="bikini">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Bikini Wax £5.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="brazilian">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Brazilian £10.00</p>
+                                                </div>
+
+                                            </div>
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="hollywood">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Hollywood £15.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="upperLip">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Upper Lip &amp; Chin Wax £7.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+                </div>
+                <div id="uib_pageAdditional_7" class="upage-content left hidden wrapping-col">
+
+                    <div class="grid grid-pad urow uib_row_5 main-bg row-height-5" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="grid urow uib_row_5 heading-titles" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_19 d-margins heading Script-mt-bold-font" data-uib="media/text" data-ver="0">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Additionals and Offers</p>
+                                                </div>
+                                            </div><span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+
+                                <div class="grid urow uib_row_6 row-height-6 innerlist-bg" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="moroccanSpray">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Moroccan Spray Tan £10.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="widget uib_w_20 Script-mt-bold-font inner-list-font-color-size innerlist-font" data-uib="media/text" data-ver="0" id="earPiercing">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p>Ear Piercing £8.00</p>
+                                                </div>
+
+                                            </div>
+
+                                            <span class="uib_shim"></span>
+                                        </div>
+                                    </div>
+                                    <span class="uib_shim"></span>
+                                </div>
+                                <div class="widget uib_w_24" data-uib="media/text" data-ver="0">
+                                    <div class="widget-container left-receptacle"></div>
+                                    <div class="widget-container right-receptacle"></div>
+                                    <div>
+                                        <p>&nbsp;</p>
+                                    </div>
+                                </div>
+                            </div><span class="uib_shim"></span>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+
+                </div>
+
+                <!-- /upage -->
+                
+                <div id="uib_pageLoyalty_5" class="upage-content left hidden wrapping-col">
+                    <div class="grid grid-pad urow uib_row_7 row-height-2 loyalty-bg" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_8 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="grid urow uib_row_6 row-height-6 outer-list-position" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="uib-grid widget uib_w_26 grid-height outerlistBG heart-styles" data-uib="layout/grid" data-ver="0">
+                                                <div class="uib-grid-row">
+                                                    <div class="uib-grid-cell widget-container">
+
+                                                       <!--<a onclick="$.ui.loadContent('#uib_page_flip_3',false,false,'flip');" >--> 
+                                                            <a href="#flipHeart1" data-transition="flip">
+                                                            <img class="widget uib_h1 loyalty-hearts " id="h1" src="images/hollow-heart.gif">
+                                                        </a>
+                                                    </div>
+                                                    <div class="uib-grid-cell widget-container">
+
+                                                        <a href="#flipHeart2" data-transition="flip">
+                                                            <img class="widget uib_h2 loyalty-hearts" id="h2" src="images/hollow-heart.gif">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="uib-grid-cell widget-container">
+
+                                                        <a href="#flipHeart3" data-transition="flip">
+                                                            <img class="widget uib_h3 loyalty-hearts " id="h3" src="images/hollow-heart.gif">
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+                                                <div class="uib-grid-row">
+                                                    <div class="uib-grid-cell widget-container">
+
+                                                        <a href="#flipHeart4" data-transition="flip">
+                                                            <img class="widget uib_h4 loyalty-hearts " id="h4" src="images/hollow-heart.gif">
+                                                        </a>
+                                                    </div>
+                                                    <div class="uib-grid-cell widget-container">
+
+                                                        <a href="#flipHeart5" data-transition="flip">
+                                                            <img class="widget uib_h5 loyalty-hearts " id="h5" src="images/hollow-heart.gif">
+                                                        </a>
+                                                    </div>
+
+                                                    <div class="uib-grid-cell widget-container">
+
+                                                        <a href="#flipHeart6" data-transition="flip">
+                                                            <img class="widget uib_h6 loyalty-hearts " id="h6" src="images/hollow-heart.gif" >
+                                                        </a>
+                                                    </div>
+
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="uib_shim"></span>
+                    
+                
+                    
+                    
+                    <!-- SUB PAGE FLIPPED -->
+                    
+                        <!--      <div class="upage vertical-col left panel mainpage-bg" id="uib_page_flip_subPage" data-header="none" data-footer="none">
+                <div id="uib_page_flip_subPage" class="upage-content vertical-col left hidden">
+
+                    <div class="grid urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_9 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_27 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <label class="narrow-control label-inline">Input</label>
+                                    <input class="wide-control" placeholder="Placeholder Text" type="text">
+                                </div><a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn">Enter Code</a><span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+                
+            </div> -->
+                    
+                    <div class="panel" id="flipHeart1"  data-footer="none">
+            <header>
+                
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+                                    <input class="wide-control" placeholder="Loyality Code" type="password" id="textValue1">
+                        <a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn1" onclick="check_code1();">Enter Code</a>
+            
+        </div>
+                    
+                     <div class="panel" id="flipHeart2"  data-footer="none">
+            <header>
+                
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+                                    <input class="wide-control" placeholder="Loyality Code" type="password" id="textValue2">
+                        <a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn2" onclick="check_code2();">Enter Code</a>
+            
+        </div>
+                     <div class="panel" id="flipHeart3"  data-footer="none">
+            <header>
+                
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+                                    <input class="wide-control" placeholder="Loyality Code" type="password" id="textValue3">
+                        <a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn3" onclick="check_code3();">Enter Code</a>
+            
+        </div>
+                     <div class="panel" id="flipHeart4"  data-footer="none">
+            <header>
+                
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+                                    <input class="wide-control" placeholder="Loyality Code" type="password" id="textValue4">
+                        <a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn4" onclick="check_code4();">Enter Code</a>
+            
+        </div> <div class="panel" id="flipHeart5"  data-footer="none">
+            <header>
+                
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+                                    <input class="wide-control" placeholder="Loyality Code" type="password" id="textValue5">
+                        <a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn5" onclick="check_code5();">Enter Code</a>
+            
+        </div> <div class="panel" id="flipHeart6"  data-footer="none">
+            <header>
+                
+                <a onclick="$.ui.goBack();" data-transition="flip" class="button icon close" style="float:right"></a>
+            </header>
+                                    <input class="wide-control" placeholder="Loyality Code" type="password" id="textValue6">
+                        <a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn6" onclick="check_code6();">Enter Code</a>
+            
+        </div>
+
+            
+
+                    
+                </div>
+
+               <!-- <div id="id_flipPage" class="panel">
+
+                </div> -->
+
+                <div id="uib_pageContact_8" class="upage-content vertical-col left hidden">
+                    <div class="grid urow uib_row_2 row-height-2 contact-bg" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_2 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="grid urow uib_row_6 row-height-6 outer-list-position" data-uib="layout/row" data-ver="0">
+                                    <div class="col uib_col_6 col-0_12-12" data-uib="layout/col" data-ver="0">
+                                        <div class="widget-container content-area vertical-col">
+
+                                            <div class="widget uid_call Script-mt-bold-font inner-list-font-color-size innerlist-font outerlistBG " data-uib="media/text" data-ver="0" id="callID">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                
+                                                <div><a href="tel:+07-517-356-467" style="text-decoration:none;">
+                                                <p class="icon phone">&nbsp;&nbsp;&nbsp;Call
+
+                                                    </p>
+                                                    </a>
+                                                </div>
+
+                                            </div>
+
+                                            <div class="widget uid_address Script-mt-bold-font inner-list-font-color-size innerlist-font outerlistBG" data-uib="media/text" data-ver="0" id="addressId">
+                                                <div class="widget-container left-receptacle"></div>
+                                                <div class="widget-container right-receptacle"></div>
+                                                <div>
+                                                    <p class="icon location">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Address</p>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="widget uib_w_25 google-maps-size d-margins map-padding" data-uib="media/google_maps" data-ver="0" data-rpath="null" data-zoom="8" data-long="-2.3793226" data-lat="53.5382549" data-center-latitude="53.5382549" data-center-longitude="-2.3793226"></div>
+                            </div>
+                            <span class="uib_shim"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- /uwrap -->
+
+            </div>
+         <!--   
+            <div class="upage vertical-col left panel mainpage-bg" id="uib_pageFlip" data-header="none" data-footer="none">
+                <div id="uib_page_flip_subPage" class="upage-content vertical-col left hidden">
+
+                    <div class="grid urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
+                        <div class="col uib_col_9 col-0_12-12" data-uib="layout/col" data-ver="0">
+                            <div class="widget-container content-area vertical-col">
+
+                                <div class="table-thing with-label widget uib_w_27 d-margins" data-uib="app_framework/input" data-ver="1">
+                                    <label class="narrow-control label-inline">Input</label>
+                                    <input class="wide-control" placeholder="Placeholder Text" type="text">
+                                </div><a class="button widget uib_w_28 d-margins icon upload" data-uib="app_framework/button" data-ver="1" id="code_btn">Enter Code</a><span class="uib_shim"></span>
+                            </div>
+                        </div>
+                        <span class="uib_shim"></span>
+                    </div>
+                </div>
+            </div>
+            -->
+            
+        </div>    
+    </body>
+
+</html>
